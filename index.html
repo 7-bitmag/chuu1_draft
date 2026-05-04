@@ -3,11 +3,33 @@
 	<head>
 		<link href="publication-web-resources/css/main.css" rel="stylesheet" type="text/css">
 		</link>
+		<style>
+			.contentIframeClass {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 2592px;
+				height: 1728px;
+				border: none;
+				transform-origin: top left;
+			}
+		</style>
+		<script>
+			const CONTENT_WIDTH = 2592;
+			const CONTENT_HEIGHT = 1728;
+			function scaleContentIframe() {
+				const iframe = document.getElementById("contentIFrame");
+				if (!iframe) return;
+				const scale = Math.min(window.innerWidth / CONTENT_WIDTH, window.innerHeight / CONTENT_HEIGHT);
+				iframe.style.transform = `scale(${scale})`;
+			}
+			window.addEventListener("resize", scaleContentIframe);
+		</script>
 		<script src="publication-web-resources/script/main.js" type="text/javascript">
 		</script>
 	</head>
-	<body onload="showHideArrows()">
-		<iframe onload="showHideArrows()" id="contentIFrame" class="contentIframeClass" src="publication-web-resources/html/publication.html">		</iframe>
+	<body onload="showHideArrows(); scaleContentIframe()">
+		<iframe onload="showHideArrows(); scaleContentIframe()" id="contentIFrame" class="contentIframeClass" src="publication-web-resources/html/publication.html">		</iframe>
 		<iframe id="dummyIFrame" class="dummyFrameClass">		</iframe>
 		<div class="prev" onclick="showPreviousPage()">		&#10094;		</div>
 		<div class="next" onclick="showNextPage()">		&#10095;		</div>
