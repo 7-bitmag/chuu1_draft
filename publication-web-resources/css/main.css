@@ -1,6 +1,6 @@
 .contentIframeClass {
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 50%;
 	position: absolute;
 	border: none;
 }
@@ -27,4 +27,5 @@ html, body {
 	width: 50%;
 	height: 50%;
 	position: absolute;
+	border: none;
 }
